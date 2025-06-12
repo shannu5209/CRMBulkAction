@@ -43,7 +43,7 @@ exports.getBulkActionStatus = async (req, res) => {
       return res.status(404).json({ error: 'Action not found' });
     }
 
-    res.json(action);
+    res.json(action || { message: "not Found" });
   } catch (err) {
     req.logger(`Failed to get bulk action status: ${err.message}`, 'error');
     res.status(500).json({ error: 'Failed to retrieve status' });
@@ -54,7 +54,7 @@ exports.getAllBulkActions = async (req, res) => {
   try {
     req.logger('Fetching all bulk actions');
     const actions = await BulkAction.find().sort({ createdAt: -1 });
-    res.json(actions);
+    res.json(actions || { message: "not Found" });
   } catch (err) {
     req.logger(`Failed to fetch bulk actions: ${err.message}`, 'error');
     res.status(500).json({ error: 'Failed to fetch actions' });
@@ -65,7 +65,7 @@ exports.getStats = async (req, res) => {
   try {
     req.logger('Fetching all bulk action stats');
     const action = await BulkAction.findOne({ actionId: req.params.id });
-    res.json(action?.stats || {});
+    res.json(action?.stats || { message: "not Found" });
   } catch (err) {
     req.logger(`Failed to fetch bulk action stats: ${err.message}`, 'error');
     res.status(500).json({ error: 'Failed to fetch action status' });
