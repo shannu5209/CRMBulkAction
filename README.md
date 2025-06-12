@@ -20,8 +20,8 @@ A high-performance, scalable bulk action platform built with Node.js, MongoDB, B
 ### 1. 📥 Clone the Repo
 
 ```bash
-git clone https://github.com/yourname/bulk-action-platform.git
-cd bulk-action-platform
+git clone https://github.com/yourname/CRMBulkAction.git
+cd CRMBulkAction
 ```
 
 ### 2. 📦 Install Dependencies
